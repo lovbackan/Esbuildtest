@@ -1,0 +1,51 @@
+{
+  "extends": ["stylelint-config-recommended-scss", "stylelint-config-prettier"],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order",
+    "stylelint-selector-bem-pattern",
+    "stylelint-prettier"
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    "prettier/prettier": true,
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["else", "elseif", "return"]
+      }
+    ],
+    "at-rule-no-vendor-prefix": null,
+    "at-rule-no-unknown": null,
+    "block-closing-brace-newline-after": [
+      "always",
+      { "ignoreAtRules": ["if", "else"] }
+    ],
+    "block-closing-brace-space-after": null,
+    "block-closing-brace-space-before": null,
+    "block-no-empty": null,
+    "color-hex-length": null,
+    "comment-empty-line-before": null,
+    "declaration-block-single-line-max-declarations": 1,
+    "declaration-colon-newline-after": null,
+    "function-calc-no-unspaced-operator": true,
+    "indentation": 4,
+    "max-line-length": [80, { "severity": "warning" }],
+    "media-feature-name-no-vendor-prefix": null,
+    "no-descending-specificity": null,
+    "order/properties-alphabetical-order": true,
+    "plugin/selector-bem-pattern": {
+      "preset": "suit",
+      "ignoreCustomProperties": ".*",
+      "ignoreSelectors": "body"
+    },
+    "property-no-vendor-prefix": null,
+    "rule-empty-line-before": null,
+    "selector-max-id": 0,
+    "selector-no-vendor-prefix": null,
+    "selector-pseudo-element-colon-notation": null,
+    "value-no-vendor-prefix": null
+  }
+}

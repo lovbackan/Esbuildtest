@@ -1,0 +1,43 @@
+{
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
+    "esbuild": "^0.19.8",
+    "esbuild-sass-plugin": "^2.16.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "postcss-preset-env": "^9.3.0",
+    "rimraf": "^3.0.2",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "tabWidth": 2
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "build:prod": "node build.js",
+    "build": "run-p clean build:prod",
+    "clean": "rimraf public",
+    "build:css:local": "node buildLocal.js css",
+    "build:html:local": "node buildLocal.js html",
+    "watch:js:local": "esbuild src/js/main.js --outfile=local/assets/js/main.min.js --minify --bundle --watch --sourcemap",
+    "watch:css:local": "chokidar './src/scss/*.scss' -c 'npm run build:css:local'",
+    "watch:html:local": "chokidar 'src/index.html' -c 'npm run build:html:local'",
+    "watch": "run-p watch:js:local watch:css:local watch:html:local",
+    "deploy": "node deploy.js",
+    "server": "run-p watch server:local",
+    "server:local": "browser-sync start --files 'local' --server 'local'",
+    "server:public": "browser-sync start --files 'public' --server 'public'"
+  },
+  "type": "module",
+  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead"
+}

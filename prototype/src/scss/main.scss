@@ -1,0 +1,19 @@
+@import "navbar";
+@import "card";
+@import "footer";
+@import "contact";
+@import "features";
+@import "hero";
+@import "about";
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    font-family: "Courier New", Courier, monospace;
+}
